@@ -1,8 +1,5 @@
-import React from 'react'
 import {PhoneIcon, MapPinIcon, EnvelopeIcon} from '@heroicons/react/24/solid'
 import { useForm, SubmitHandler } from 'react-hook-form'
-
-type Props = {}
 
 type Inputs = {
   name: string;
@@ -11,7 +8,7 @@ type Inputs = {
   message: string;
 }
 
-export default function ContactMe({}: Props) {
+export default function ContactMe() {
 
   const {register, handleSubmit} = useForm<Inputs>()
   const onSubmit: SubmitHandler<Inputs> = formData => {
@@ -21,20 +18,19 @@ export default function ContactMe({}: Props) {
   return (
     <div className='h-screen w-full flex relative flex-col text-center md:text-left md:flex-row max-w-7xl px-10 justify-evenly mx-auto items-center'>
         <h3 className='absolute top-24 tracking-[20px] text-gray-500 text-2xl uppercase'>contact</h3>
-        <div className='flex items-center flex-col space-y-10 justify-center'>
-            <h4 className='text-4xl font-semibold text-center'>Get in touch !</h4>
-            <div className='space-y-10'>
+        <div className='flex items-center flex-col space-y-5 justify-center'>
+            <div className='space-y-4 pt-16'>
                 <div className='flex items-center space-x-5'>
                     <PhoneIcon className='text-[#F7AB0A] h-7 w-7 animate-pulse'/>
-                    <p className='text-2xl'>+57 320 760 6342</p>
+                    <p className='text-xl md:text-2xl'>+57 320 760 6342</p>
                 </div>
                 <div className='flex items-center space-x-5'>
                     <EnvelopeIcon className='text-[#F7AB0A] h-7 w-7 animate-pulse'/>
-                    <p className='text-2xl'>saguirreg@unal.edu.co</p>
+                    <p className='text-xl  md:text-2xl'>saguirreg@unal.edu.co</p>
                 </div>
                 <div className='flex items-center space-x-5'>
                     <MapPinIcon className='text-[#F7AB0A] h-7 w-7 animate-pulse'/>
-                    <p className='text-2xl'>Manizales - Colombia</p>
+                    <p className='text-xl  md:text-2xl'>Manizales - Colombia</p>
                 </div>
             </div>
             <form onSubmit={handleSubmit(onSubmit)}  className='flex flex-col space-y-2 w-full mx-auto'>

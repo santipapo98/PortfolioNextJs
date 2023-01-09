@@ -1,4 +1,3 @@
-import React from 'react'
 import {motion} from 'framer-motion'
 import ExperienceCard from './ExperienceCard'
 import { Experience } from '../typings'
@@ -15,7 +14,7 @@ function WorkExperience({experiences}: Props) {
     transition={{duration: 1.5}}
     viewport={{once: true}}
     className='h-screen flex relative overflow-hidden flex-col text-left md:flex-row max-w-full md:px-10 md:p-0 justify-evenly ms-auto items-center'>
-        <h3 className='absolute top-24 tracking-[20px] text-gray-500 text-2xl uppercase'>Experience</h3>
+        <h3 className='absolute top-20 tracking-[20px] text-gray-500 text-2xl uppercase'>Experience</h3>
         <div className='w-full flex space-x-5 overflow-x-scroll p-3 md:p-10  snap-x snap-mandatory scrollbar'>
           {experiences?.map((experience) => {
             return (

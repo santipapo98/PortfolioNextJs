@@ -1,9 +1,6 @@
 import Link from 'next/link'
-import React from 'react'
 
-type Props = {}
-
-function Footer({}: Props) {
+function Footer() {
   return (
     <Link href="#hero">
         <footer className='sticky bottom-5 w-full cursor-pointer'>

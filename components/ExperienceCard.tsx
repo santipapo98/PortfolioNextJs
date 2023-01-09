@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion'
-import React from 'react'
 import { urlFor } from '../sanity'
 import { Experience } from '../typings'
 
@@ -9,7 +8,7 @@ type Props = {
 
 function ExperienceCard({experience}: Props) {
   return (
-    <article className='flex flex-col rounded-lg items-center space-y-2 flex-shrink-0 w-full md:w-[600px] xl:w-[900px] snap-center bg-[#292929] md:p-10 p-3 opacity-40 hover:opacity-100 transition-opacity duration-200'>
+    <article className='flex flex-col rounded-lg items-center justify-end space-y-2 flex-shrink-0 w-full md:w-[600px] xl:w-[900px] snap-center bg-[#292929] md:p-10 p-3 pb-10 opacity-40 hover:opacity-100 transition-opacity duration-200'>
         <motion.img className='w-32 h-32 rounded-full md:rounded-full xl:w-[200px] xl:h-[200px] object-center'
         src={urlFor(experience.companyImage).url()}
         alt=''

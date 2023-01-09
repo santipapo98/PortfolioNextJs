@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import React from 'react'
 import {Cursor, useTypewriter} from 'react-simple-typewriter'
 import { urlFor } from '../sanity'
 import { PageInfo } from '../typings'
@@ -11,7 +10,7 @@ type Props = {
 
 function Hero({pageInfo}: Props) {
     const [text, count] = useTypewriter({
-        words: [`Hi there, my name is ${pageInfo?.name}`,"Love-for-programming.tsx", "<Learning enthusiast />"], loop: true, delaySpeed: 2000
+        words: [`Hello!, Santiago Aguirre here`,"Love-for-programming.tsx", "<Learning enthusiast />"], loop: true, delaySpeed: 2000
     })
 
   return (

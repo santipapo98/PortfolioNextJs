@@ -1,4 +1,3 @@
-import React from 'react'
 import {motion} from 'framer-motion'
 import { Project } from '../typings'
 import { urlFor } from '../sanity'
@@ -19,7 +18,7 @@ function Projects({projects}: Props) {
           <div className='relative w-full h-full flex overflow-x-scroll overflow-y-hidden snap-x snap-mandatory z-20 scrollbar'>
             {projects.map((project) => {
               return (
-                <div key={project?._id} className="w-screen flex-shrink-0 snap-center flex flex-col space-y-5 items-center justify-center p-10 md:p-44 h-screen">
+                <div key={project?._id} className="w-screen flex-shrink-0 snap-center flex flex-col space-y-5 items-center justify-center p-4 md:p-44 h-screen">
                   <motion.img
                   initial={{
                     y: -300,
@@ -30,14 +29,14 @@ function Projects({projects}: Props) {
                   viewport={{once: true}}
                   className='w-[full] h-[200px]'
                   src={urlFor(project?.image).url()} alt="" />
-                  <div className='space-y-10 px-0 md:px-10 max-w-6xl'>
+                  <div className='space-y-4 px-0 md:px-10 max-w-6xl'>
                     <h4 className='text-4xl font-semibold text-center'> <Link href={project?.linkToBuild} target="_blank"><span className='underline decoration-[#F7AB0A]/50'>{project?.title}</span></Link></h4>
-                    <div className='flex items-center justify-center space-x-2'>
+                    <div className='flex items-center justify-center space-x-2 mt-0'>
                       {project?.technologies?.map((technology) => {
                         return (<img className='h-10 h-10' key={technology?._id} src={urlFor(technology.image).url()}/> )
                       })}
                     </div>
-                    <p className='text-lg text-center md:text-left'>{project?.summary}</p>
+                    <p className='text-md text-center md:text-left'>{project?.summary}</p>
                   </div>
                 </div>
               )
