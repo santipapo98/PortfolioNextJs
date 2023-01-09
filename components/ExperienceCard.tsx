@@ -1,13 +1,17 @@
 import { motion } from 'framer-motion'
 import React from 'react'
+import { urlFor } from '../sanity'
+import { Experience } from '../typings'
 
-type Props = {}
+type Props = {
+    experience: Experience
+}
 
-function ExperienceCard({}: Props) {
+function ExperienceCard({experience}: Props) {
   return (
-    <article className='flex flex-col rounded-lg items-center space-y-2 flex-shrink-0 w-[500px] md:w-[600px] xl:w-[900px] snap-center bg-[#292929] p-10 opacity-40 hover:opacity-100 transition-opacity duration-200'>
-        <motion.img className='w-32 h-32 rounded-full md:rounded-full xl:w-[200px] xl:h-[200px] object-cover object-center'
-        src='/Santiago Aguirre.jpg'
+    <article className='flex flex-col rounded-lg items-center space-y-2 flex-shrink-0 w-full md:w-[600px] xl:w-[900px] snap-center bg-[#292929] md:p-10 p-3 opacity-40 hover:opacity-100 transition-opacity duration-200'>
+        <motion.img className='w-32 h-32 rounded-full md:rounded-full xl:w-[200px] xl:h-[200px] object-center'
+        src={urlFor(experience.companyImage).url()}
         alt=''
         initial={{
             y: -100,
@@ -22,21 +26,19 @@ function ExperienceCard({}: Props) {
         />
 
         <div className='px-0 md:px-10'>
-            <h4 className='text-4xl font-light'>CEO of hello</h4>
-            <p className='font-bold text-2xl mt-1'>KASMAICK</p>
-            <div className='flex space-x-2 my-2'>   
-                <img className='h-10 w-10 rounded-full' src="https://img.icons8.com/ultraviolet/512/react.png" alt="" />
-                <img className='h-10 w-10 rounded-full' src="https://img.icons8.com/ultraviolet/512/react.png" alt="" />
-                <img className='h-10 w-10 rounded-full' src="https://img.icons8.com/ultraviolet/512/react.png" alt="" />
-                <img className='h-10 w-10 rounded-full' src="https://img.icons8.com/ultraviolet/512/react.png" alt="" />
+            <h4 className='text-4xl font-light'>{experience?.jobTitle}</h4>
+            <p className='font-bold text-2xl mt-1'>{experience?.company}</p>
+            <div className='flex space-x-2 my-2'>
+                {experience?.technologies?.map((technologie) => {
+                    return (<img className='h-10 w-10 rounded-full' key={technologie._id} src={urlFor(technologie.image).url()} alt={technologie.title} />)
+                })}
+
             </div>
-            <p className='uppercase py-5 text-gray-300'>Started... - Ended...</p>
+            <p className='uppercase py-5 text-gray-300'>{new Date(experience.dateStarted).toDateString()} -{" "} {experience.isCurrentlyWorkingHere ? "Present" : new Date(experience.dateEnded).toDateString()}</p>
             <ul className='list-disc space-y-4 ml-5 text-lg'>
-                <li>Summary Points</li>
-                <li>Summary Points</li>
-                <li>Summary Points</li>
-                <li>Summary Points</li>
-                <li>Summary Points</li>
+                {experience.points.map((point) => {
+                    return(<li key={point}>{point}</li>)
+                })}
             </ul>
         </div>
     </article>
