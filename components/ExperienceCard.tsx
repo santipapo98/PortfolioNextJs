@@ -1,14 +1,17 @@
 import { motion } from 'framer-motion'
 import { urlFor } from '../sanity'
 import { Experience } from '../typings'
+import { ArrowSmallRightIcon } from '@heroicons/react/24/solid'
 
 type Props = {
-    experience: Experience
+    experience: Experience,
+    scrollRight?: boolean
 }
 
-function ExperienceCard({experience}: Props) {
+function ExperienceCard({experience, scrollRight}: Props) {
   return (
-    <article className='flex flex-col rounded-lg items-center justify-end space-y-2 flex-shrink-0 w-full md:w-[600px] xl:w-[900px] snap-center bg-[#292929] md:p-10 p-3 pb-10 opacity-40 hover:opacity-100 transition-opacity duration-200'>
+    <article className='max-h-[550px] relative flex flex-col rounded-lg items-center justify-end space-y-2 flex-shrink-0 w-full h-full md:w-[600px] xl:w-[900px] snap-center bg-[#292929] md:p-10 p-3 pb-10 opacity-40 hover:opacity-100 transition-opacity duration-200'>
+        {scrollRight && <ArrowSmallRightIcon className='absolute top-1/4 right-1 text-[#F7AB0A] h-7 w-7 animate-pulse'/>}
         <motion.img className='w-32 h-32 rounded-full md:rounded-full xl:w-[200px] xl:h-[200px] object-center'
         src={urlFor(experience.companyImage).url()}
         alt=''
@@ -34,7 +37,7 @@ function ExperienceCard({experience}: Props) {
 
             </div>
             <p className='uppercase py-5 text-gray-300'>{new Date(experience.dateStarted).toDateString()} -{" "} {experience.isCurrentlyWorkingHere ? "Present" : new Date(experience.dateEnded).toDateString()}</p>
-            <ul className='list-disc space-y-4 ml-5 text-lg'>
+            <ul className='list-disc space-y-4 ml-5 text-md'>
                 {experience.points.map((point) => {
                     return(<li key={point}>{point}</li>)
                 })}

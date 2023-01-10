@@ -15,6 +15,7 @@ export default function ContactMe() {
     window.location.href = `mailto:saguirreg@unal.edu.co?subject=${formData.subject}&body=Hi, my name is ${formData.name} ${formData.message} (${formData.email})`
   }
 
+
   return (
     <div className='h-screen w-full flex relative flex-col text-center md:text-left md:flex-row max-w-7xl px-10 justify-evenly mx-auto items-center'>
         <h3 className='absolute top-24 tracking-[20px] text-gray-500 text-2xl uppercase'>contact</h3>
